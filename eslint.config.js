@@ -27,6 +27,7 @@ export default tseslint.config(
       'react-compiler': reactCompiler,
     },
     rules: {
+      'linebreak-style': ['error', 'unix'],
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
