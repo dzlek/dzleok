@@ -4,7 +4,7 @@ import Header from './components/Header/Header';
 
 function App() {
   function handleError() {
-    throw new Error('Something went wrong');
+    throw new Error('wrong');
   }
 
   return (
