@@ -5,9 +5,12 @@ type SearchProps = {
 };
 
 const Search: React.FC<SearchProps> = ({ initialValue = '' }) => {
-  const [inputValue, setInputValue] = useState<string>(initialValue);
+  const [inputValue, setInputValue] = useState<string>(
+    localStorage.getItem('searchValue') || initialValue
+  );
 
   const handleSearch = () => {
+    localStorage.setItem('searchValue', inputValue);
     console.log('SearchInput:', inputValue);
   };
 
