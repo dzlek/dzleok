@@ -23,3 +23,9 @@ export interface ApiResponse {
   previous: string | null;
   results: Person[];
 }
+
+export interface ResultsProps {
+  data: ApiResponse | null;
+  loading: boolean;
+  error: string | null;
+}

@@ -1,33 +1,26 @@
-import { useEffect, useState } from 'react';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 type SearchProps = {
   onSearch: (query: string) => void;
 };
 
 const Search = ({ onSearch }: SearchProps) => {
-  const [inputValue, setInputValue] = useState<string>('');
-
-  useEffect(() => {
-    const savedValue = localStorage.getItem('searchValue');
-    if (savedValue) {
-      setInputValue(savedValue);
-    }
-  }, []);
+  const { query, updateLocalStorage } = useLocalStorage();
 
   const handleSearch = () => {
-    onSearch(inputValue);
-    localStorage.setItem('searchValue', inputValue);
+    onSearch(query);
+    updateLocalStorage(query);
   };
 
   return (
     <div className="search">
       <input
         type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+        value={query}
+        onChange={(e) => updateLocalStorage(e.target.value)}
         placeholder="Find..."
       />
-      <button onClick={handleSearch} disabled={!inputValue.trim()}>
+      <button onClick={handleSearch} disabled={!query.trim()}>
         Search
       </button>
     </div>

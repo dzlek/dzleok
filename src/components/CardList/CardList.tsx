@@ -1,5 +1,5 @@
 const CardList = () => {
-  return <header>Cardlist</header>;
+  return <div>Cardlist</div>;
 };
 
 export default CardList;
