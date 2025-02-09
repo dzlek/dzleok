@@ -1,5 +1,6 @@
 import React from 'react';
 import { ResultsProps } from '../../types/types';
+import CardList from '../CardList/CardList';
 
 const Results: React.FC<ResultsProps> = ({ data, loading, error }) => {
   console.log('data:', data);
@@ -12,7 +13,9 @@ const Results: React.FC<ResultsProps> = ({ data, loading, error }) => {
   return (
     <main>
       {data.results.map((person) => (
-        <div key={person.name}>{person.name}</div>
+        <div key={person.name}>
+          <CardList person={person} />
+        </div>
       ))}
     </main>
   );

@@ -29,3 +29,7 @@ export interface ResultsProps {
   loading: boolean;
   error: string | null;
 }
+
+export type CardListProps = {
+  person: Person;
+};
