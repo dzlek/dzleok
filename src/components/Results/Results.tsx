@@ -12,7 +12,6 @@ const Results: React.FC<ResultsProps> = ({ query }) => {
 
   const currentPage = useMemo(() => Number(page) || 1, [page]);
   const { data, loading, error } = useFetch(query, currentPage);
-  console.log(data);
 
   if (!page || Number(page) !== currentPage) {
     navigate(`/search/${currentPage}`, { replace: true });

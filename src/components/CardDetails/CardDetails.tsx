@@ -1,10 +1,16 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import s from './CardDetails.module.scss';
 import useCharacterDetails from '../../hooks/useCharacterDetails';
 
 const CardDetails: React.FC = () => {
-  const { id } = useParams();
+  const { id, page } = useParams<{ id: string; page: string }>();
   const { data, loading, error } = useCharacterDetails(id as string);
+
+  const navigate = useNavigate();
+
+  const handleClose = () => {
+    navigate(`/search/${page}`);
+  };
 
   if (loading)
     return (
@@ -17,6 +23,9 @@ const CardDetails: React.FC = () => {
 
   return (
     <div className={s.cardDetails}>
+      <button onClick={handleClose} className={s.closeButton}>
+        X
+      </button>
       <h2>{data.name}</h2>
       <p>Birth Year: {data.birth_year}</p>
       <p>Eye Color: {data.eye_color}</p>

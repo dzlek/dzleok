@@ -6,9 +6,9 @@ const CardList = ({ data }: { data: ApiResponse }) => {
   return (
     <div className={s.cardList}>
       {data.results.map((person) => (
-        <div key={person.name}>
+        <article key={person.name}>
           <Card person={person} />
-        </div>
+        </article>
       ))}
     </div>
   );
