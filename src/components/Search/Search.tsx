@@ -14,6 +14,12 @@ const Search = ({ onSearch, query }: SearchProps) => {
     setInputValue(query);
   }, [query]);
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      onSearch(inputValue);
+    }
+  };
+
   const handleSearch = () => {
     onSearch(inputValue);
     navigate('/search/1');
@@ -25,6 +31,7 @@ const Search = ({ onSearch, query }: SearchProps) => {
         type="text"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={handleKeyDown}
         placeholder="Find..."
       />
       <button onClick={handleSearch} disabled={!inputValue.trim()}>
