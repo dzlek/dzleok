@@ -1,0 +1,15 @@
+.paginationButton {
+  margin: 10px;
+  padding: 3px 10px;
+  background-color: orangered;
+  color: #fff;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: grey;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
