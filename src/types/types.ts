@@ -1,4 +1,3 @@
-// Пример интерфейсов
 export interface Film {
   title: string;
   url: string;
@@ -24,10 +23,10 @@ export interface Person {
   birth_year: string;
   gender: string;
   homeworld: string;
-  films: string[]; // URLs
-  species: string[]; // URLs
-  vehicles: string[]; // URLs
-  starships: string[]; // URLs
+  films: string[];
+  species: string[];
+  vehicles: string[];
+  starships: string[];
   created: string;
   edited: string;
   url: string;

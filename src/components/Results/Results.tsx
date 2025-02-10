@@ -26,7 +26,7 @@ const Results: React.FC<ResultsProps> = ({ query }) => {
     navigate(`/search/${currentPage + 1}`);
   };
 
-  if (loading) return <main>Loading...</main>;
+  if (loading) return <main>Loading...Main API call</main>;
   if (error) return <main>Error: {error}</main>;
   if (!data || !data.results || data.results.length === 0)
     return <main>No results found</main>;

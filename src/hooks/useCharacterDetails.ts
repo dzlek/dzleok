@@ -7,7 +7,6 @@ import {
   PersonWithDetails,
 } from '../types/types';
 
-// Универсальная функция для фетча связанных данных с дженериками
 const fetchRelatedData = async <T>(urls: string[]): Promise<T[]> => {
   return Promise.all(
     urls.map(async (url) => {
@@ -30,11 +29,9 @@ const useCharacterDetails = (id: string) => {
         setLoading(true);
         setError(null);
 
-        // Загружаем данные персонажа
         const res = await fetch(`https://swapi.dev/api/people/${id}/`);
         const character: Person = await res.json();
 
-        // Загружаем все связанные данные с типами
         const homeworld = character.homeworld
           ? await fetch(character.homeworld).then((res) => res.json())
           : null;
@@ -44,7 +41,6 @@ const useCharacterDetails = (id: string) => {
         const starships = await fetchRelatedData<Starship>(character.starships);
         const vehicles = await fetchRelatedData<Vehicle>(character.vehicles);
 
-        // Обновляем состояние с данными
         setData({
           ...character,
           homeworld,

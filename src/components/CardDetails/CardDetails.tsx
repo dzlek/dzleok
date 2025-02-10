@@ -6,7 +6,12 @@ const CardDetails: React.FC = () => {
   const { id } = useParams();
   const { data, loading, error } = useCharacterDetails(id as string);
 
-  if (loading) return <div className={s.cardDetails}>Loading details...</div>;
+  if (loading)
+    return (
+      <div className={s.cardDetails}>
+        Loading details...This is additional API call...
+      </div>
+    );
   if (error) return <div className={s.cardDetails}>Error: {error}</div>;
   if (!data) return null;
 

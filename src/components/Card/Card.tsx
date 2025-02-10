@@ -10,9 +10,7 @@ const Card = ({ person }: CardProps) => {
   const id = url.split('/').slice(-2, -1)[0];
 
   const handleClick = () => {
-    console.log(person.name);
     navigate(`/search/${currentPage}/details/${id}`);
-    console.log(id);
   };
 
   return (
