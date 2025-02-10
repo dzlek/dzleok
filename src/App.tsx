@@ -24,7 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Results query={query} />} />
             <Route path="/search/:page" element={<Results query={query} />}>
-              <Route path="details" element={<CardDetails />} />
+              <Route path="details/:id" element={<CardDetails />} />
             </Route>
             <Route path="*" element={<Page404 />} />
           </Routes>

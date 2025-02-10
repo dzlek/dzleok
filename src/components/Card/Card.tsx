@@ -6,10 +6,13 @@ const Card = ({ person }: CardProps) => {
   const navigate = useNavigate();
   const { page } = useParams();
   const currentPage = page || 1;
+  const { url } = person;
+  const id = url.split('/').slice(-2, -1)[0];
 
   const handleClick = () => {
     console.log(person.name);
-    navigate(`/search/${currentPage}/details`);
+    navigate(`/search/${currentPage}/details/${id}`);
+    console.log(id);
   };
 
   return (

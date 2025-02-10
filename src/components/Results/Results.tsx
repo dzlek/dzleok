@@ -33,7 +33,10 @@ const Results: React.FC<ResultsProps> = ({ query }) => {
 
   return (
     <main className={s.results}>
-      <CardList data={data} />
+      <div className={s.horizontal}>
+        <CardList data={data} />
+        <Outlet />
+      </div>
       {(data.next || data.previous) && (
         <Pagination
           previous={data.previous ? `/search/${currentPage - 1}` : null}
@@ -42,7 +45,6 @@ const Results: React.FC<ResultsProps> = ({ query }) => {
           onNext={handleNext}
         />
       )}
-      <Outlet />
     </main>
   );
 };
