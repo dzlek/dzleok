@@ -1,33 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import { ResultsProps } from '../../types/types';
 import CardList from '../CardList/CardList';
 import Pagination from '../Pagination/Pagination';
 import { useFetch } from '../../hooks/useFetch';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import s from './Results.module.scss';
 
 const Results: React.FC<ResultsProps> = ({ query }) => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const { data, loading, error } = useFetch(query, currentPage);
+  const { page } = useParams();
   const navigate = useNavigate();
-  console.log('data:', data);
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [query]);
+  const currentPage = useMemo(() => Number(page) || 1, [page]);
+  const { data, loading, error } = useFetch(query, currentPage);
+  console.log(data);
 
-  useEffect(() => {
-    navigate(`/search/${currentPage}`);
-  }, [currentPage, navigate]);
+  if (!page || Number(page) !== currentPage) {
+    navigate(`/search/${currentPage}`, { replace: true });
+  }
 
   const handlePrevious = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1);
-    }
+    if (currentPage > 1) navigate(`/search/${currentPage - 1}`);
   };
 
   const handleNext = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    navigate(`/search/${currentPage + 1}`);
   };
 
   if (loading) return <main>Loading...</main>;
@@ -46,6 +42,7 @@ const Results: React.FC<ResultsProps> = ({ query }) => {
           onNext={handleNext}
         />
       )}
+      <Outlet />
     </main>
   );
 };
