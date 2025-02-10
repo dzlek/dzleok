@@ -15,7 +15,7 @@ const Pagination: React.FC<PaginationProps> = ({
   onNext,
 }) => {
   return (
-    <>
+    <div>
       <button
         className={s.paginationButton}
         onClick={onPrevious}
@@ -26,7 +26,7 @@ const Pagination: React.FC<PaginationProps> = ({
       <button className={s.paginationButton} onClick={onNext} disabled={!next}>
         Next
       </button>
-    </>
+    </div>
   );
 };
 
