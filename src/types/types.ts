@@ -25,9 +25,7 @@ export interface ApiResponse {
 }
 
 export interface ResultsProps {
-  data: ApiResponse | null;
-  loading: boolean;
-  error: string | null;
+  query: string;
 }
 
 export type CardListProps = {

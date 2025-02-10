@@ -1,23 +1,39 @@
 import './App.css';
 import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary';
-import Results from './components/Results/Results';
-import Search from './components/Search/Search';
-import { useFetch } from './hooks/useFetch';
-import ThrowError from './components/ThrowError/ThrowError';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  // Navigate,
+  // useSearchParams,
+} from 'react-router-dom';
+
 import useLocalStorage from './hooks/useLocalStorage';
+
+import ThrowError from './components/ThrowError/ThrowError';
+import Search from './components/Search/Search';
+import Results from './components/Results/Results';
+import Page404 from './components/Page404/Page404';
 
 function App() {
   const { query, updateLocalStorage } = useLocalStorage();
-  const { data, loading, error } = useFetch(query);
 
   return (
-    <div className="app">
-      <ErrorBoundary fallback={<h1>Something went wrong. Reload the page</h1>}>
-        <ThrowError />
-        <Search onSearch={updateLocalStorage} />
-        <Results data={data} loading={loading} error={error} />
-      </ErrorBoundary>
-    </div>
+    <Router>
+      <div className="app">
+        <ErrorBoundary
+          fallback={<h1>Something went wrong. Reload the page</h1>}
+        >
+          <ThrowError />
+          <Search onSearch={updateLocalStorage} query={query} />
+          <Routes>
+            <Route path="/" element={<Results query={query} />} />
+            <Route path="/search/:page" element={<Results query={query} />} />
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+        </ErrorBoundary>
+      </div>
+    </Router>
   );
 }
 
