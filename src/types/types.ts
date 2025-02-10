@@ -1,3 +1,19 @@
+// Пример интерфейсов
+export interface Film {
+  title: string;
+  url: string;
+}
+
+export interface Vehicle {
+  name: string;
+  url: string;
+}
+
+export interface Starship {
+  name: string;
+  url: string;
+}
+
 export interface Person {
   name: string;
   height: string;
@@ -8,13 +24,25 @@ export interface Person {
   birth_year: string;
   gender: string;
   homeworld: string;
-  films: string[];
-  species: string[];
-  vehicles: string[];
-  starships: string[];
+  films: string[]; // URLs
+  species: string[]; // URLs
+  vehicles: string[]; // URLs
+  starships: string[]; // URLs
   created: string;
   edited: string;
   url: string;
+}
+
+export interface PersonWithDetails
+  extends Omit<
+    Person,
+    'films' | 'species' | 'starships' | 'vehicles' | 'homeworld'
+  > {
+  films: Film[];
+  species: string[];
+  starships: Starship[];
+  vehicles: Vehicle[];
+  homeworld: string | { name: string };
 }
 
 export interface ApiResponse {

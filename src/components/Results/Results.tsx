@@ -34,17 +34,19 @@ const Results: React.FC<ResultsProps> = ({ query }) => {
   return (
     <main className={s.results}>
       <div className={s.horizontal}>
-        <CardList data={data} />
+        <div className={s.vertical}>
+          <CardList data={data} />
+          {(data.next || data.previous) && (
+            <Pagination
+              previous={data.previous ? `/search/${currentPage - 1}` : null}
+              next={data.next ? `/search/${currentPage + 1}` : null}
+              onPrevious={handlePrevious}
+              onNext={handleNext}
+            />
+          )}
+        </div>
         <Outlet />
       </div>
-      {(data.next || data.previous) && (
-        <Pagination
-          previous={data.previous ? `/search/${currentPage - 1}` : null}
-          next={data.next ? `/search/${currentPage + 1}` : null}
-          onPrevious={handlePrevious}
-          onNext={handleNext}
-        />
-      )}
     </main>
   );
 };

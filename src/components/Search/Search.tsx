@@ -17,6 +17,7 @@ const Search = ({ onSearch, query }: SearchProps) => {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       onSearch(inputValue);
+      navigate('/search/1');
     }
   };
 
