@@ -4,6 +4,7 @@ import CardList from '../CardList/CardList';
 import Pagination from '../Pagination/Pagination';
 import { useFetch } from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
+import s from './Results.module.scss';
 
 const Results: React.FC<ResultsProps> = ({ query }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -35,12 +36,8 @@ const Results: React.FC<ResultsProps> = ({ query }) => {
     return <main>No results found</main>;
 
   return (
-    <main>
-      {data.results.map((person) => (
-        <div key={person.name}>
-          <CardList person={person} />
-        </div>
-      ))}
+    <main className={s.results}>
+      <CardList data={data} />
       {(data.next || data.previous) && (
         <Pagination
           previous={data.previous ? `/search/${currentPage - 1}` : null}

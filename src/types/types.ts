@@ -28,6 +28,6 @@ export interface ResultsProps {
   query: string;
 }
 
-export type CardListProps = {
+export interface CardProps {
   person: Person;
-};
+}
