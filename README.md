@@ -4,10 +4,12 @@
 
 2. Move to the root folder of the app - run command in CLI `cd <folder>`
 
-3. Install dependencies - run command in CLI `npm install`
+3. Install dependencies - run command in CLI `npm i`
 
-4. Switch to the branch **hooks-and-routing** - run in CLI `git checkout hooks-and-routing`
+4. Switch to the branch **app-state-management** - run in CLI `git checkout app-state-management`
 
 5. Start the application - run command in CLI `npm run dev`
 
 6. Start the application in browser by provided link in CLI
+
+7. Run the test - run command in CLI `npm run coverage`
