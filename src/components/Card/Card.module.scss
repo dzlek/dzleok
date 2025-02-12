@@ -1,13 +1,13 @@
 .card {
   display: flex;
-  opacity: 0.5;
+  opacity: 0.7;
   align-items: center;
   justify-content: flex-start;
-  height: 24px;
+  height: 1.5rem;
   background-color: #ccc;
-  margin: 10px;
-  padding: 8px;
-  border-radius: 4px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
   border: 1px solid black;
   cursor: pointer;
 }
