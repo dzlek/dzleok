@@ -6,7 +6,7 @@
 
 3. Install dependencies - run command in CLI `npm i`
 
-4. Switch to the branch **app-state-management** - run in CLI `git checkout app-state-management`
+4. Switch to the branch **<according to the task>** - run in CLI `git checkout <according to the task>`
 
 5. Start the application - run command in CLI `npm run dev`
 
