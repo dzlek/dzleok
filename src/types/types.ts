@@ -58,3 +58,14 @@ export interface ResultsProps {
 export interface CardProps {
   person: Person;
 }
+
+export interface CardProps {
+  person: Person;
+}
+
+export type Theme = 'light' | 'dark';
+
+export interface ThemeContextProps {
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+}
