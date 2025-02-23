@@ -1,4 +1,3 @@
-// src/store/store.ts
 import { configureStore } from '@reduxjs/toolkit';
 import selectedItemsReducer from '../features/selectedItemsSlice';
 import { api } from '../services/api';

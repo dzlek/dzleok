@@ -1,7 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import selectedItemsReducer from '../features/selectedItemsSlice';
+import { api } from '../services/api';
 import CardList from '../components/CardList/CardList';
 import { ApiResponse } from '../types/types';
+
+const store = configureStore({
+  reducer: {
+    selectedItems: selectedItemsReducer,
+    [api.reducerPath]: api.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware),
+});
 
 describe('CardList component', () => {
   test('renders the specified number of cards', () => {
@@ -68,9 +81,11 @@ describe('CardList component', () => {
     };
 
     render(
-      <MemoryRouter>
-        <CardList data={mockData} />
-      </MemoryRouter>
+      <Provider store={store}>
+        <MemoryRouter>
+          <CardList data={mockData} />
+        </MemoryRouter>
+      </Provider>
     );
 
     const cards = screen.getAllByRole('article');
