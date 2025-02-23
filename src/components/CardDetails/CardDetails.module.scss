@@ -1,0 +1,35 @@
+.cardDetails {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.8;
+  color: var(--text-color-dark);
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: var(--bg-color-light);
+  width: 300px;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 2px solid var(--bg-color-light);
+  margin: 0 0.5rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  border: none;
+}
+
+.closeButton:hover {
+  background-color: #e0e0e0;
+}
