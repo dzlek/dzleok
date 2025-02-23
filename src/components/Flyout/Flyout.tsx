@@ -44,10 +44,12 @@ const Flyout: React.FC = () => {
         {selectedItems.length === 1 ? 'item is' : 'items are'} selected
       </span>
       <div>
-        <button onClick={handleUnselectAll} style={{ marginRight: '10px' }}>
+        <button className={s.btn} onClick={handleUnselectAll}>
           Unselect all
         </button>
-        <button onClick={handleDownload}>Download</button>
+        <button className={s.btn} onClick={handleDownload}>
+          Download
+        </button>
       </div>
     </div>
   );
