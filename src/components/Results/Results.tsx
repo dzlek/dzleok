@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import CardList from '../CardList/CardList';
 import Pagination from '../Pagination/Pagination';
@@ -11,9 +11,11 @@ const Results: React.FC<{ query: string }> = ({ query }) => {
   const navigate = useNavigate();
   const currentPage = useMemo(() => Number(page) || 1, [page]);
 
-  if (!page || Number(page) !== currentPage) {
-    navigate(`/search/${currentPage}`, { replace: true });
-  }
+  useEffect(() => {
+    if (!page) {
+      navigate(`/search/${currentPage}`, { replace: true });
+    }
+  }, [page, currentPage, navigate]);
 
   const { data, error, isLoading } = useSearchPeopleQuery(
     { query, page: currentPage },

@@ -1,7 +1,8 @@
 import React from 'react';
-import { useTheme } from '../ThemeContext/ThemeContext';
+
 import { Theme } from '../../types/types';
 import s from './ThemeButton.module.scss';
+import { useTheme } from '../../hooks/useTheme';
 
 const ThemeButton: React.FC = () => {
   const { theme, setTheme } = useTheme();
