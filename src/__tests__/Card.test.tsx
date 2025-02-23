@@ -2,6 +2,9 @@ import { describe, it, vi, beforeEach, afterEach, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import selectedItemsReducer from '../features/selectedItemsSlice';
 import Card from '../components/Card/Card';
 import { CardProps } from '../types/types';
 
@@ -33,6 +36,20 @@ const mockPerson: CardProps['person'] = {
   url: 'https://swapi.dev/api/people/1/',
 };
 
+const renderWithRedux = (component: React.ReactNode) => {
+  const store = configureStore({
+    reducer: {
+      selectedItems: selectedItemsReducer,
+    },
+  });
+
+  return render(
+    <Provider store={store}>
+      <MemoryRouter>{component}</MemoryRouter>
+    </Provider>
+  );
+};
+
 describe('Card component', () => {
   const mockNavigate = vi.fn();
 
@@ -46,21 +63,28 @@ describe('Card component', () => {
   });
 
   it('renders the relevant card data', () => {
-    render(
-      <MemoryRouter>
-        <Card person={mockPerson} />
-      </MemoryRouter>
-    );
+    renderWithRedux(<Card person={mockPerson} />);
 
     expect(screen.getByText('Luke Skywalker')).toBeInTheDocument();
+    expect(screen.getByRole('checkbox')).not.toBeChecked();
   });
 
-  it('navigates to the details page on click', () => {
-    render(
-      <MemoryRouter>
-        <Card person={mockPerson} />
-      </MemoryRouter>
-    );
+  it('toggles checkbox state when clicked', () => {
+    renderWithRedux(<Card person={mockPerson} />);
+
+    const checkbox = screen.getByRole('checkbox');
+
+    expect(checkbox).not.toBeChecked();
+
+    fireEvent.click(checkbox);
+    expect(checkbox).toBeChecked();
+
+    fireEvent.click(checkbox);
+    expect(checkbox).not.toBeChecked();
+  });
+
+  it('navigates to the details page on card click', () => {
+    renderWithRedux(<Card person={mockPerson} />);
 
     const card = screen.getByText('Luke Skywalker');
     fireEvent.click(card);
