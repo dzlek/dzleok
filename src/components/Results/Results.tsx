@@ -1,15 +1,14 @@
 import React, { useMemo } from 'react';
-import { ResultsProps } from '../../types/types';
-import CardList from '../CardList/CardList';
-import Pagination from '../Pagination/Pagination';
 import { useFetch } from '../../hooks/useFetch';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import CardList from '../CardList/CardList';
+import Pagination from '../Pagination/Pagination';
+import Flyout from '../Flyout/Flyout';
 import s from './Results.module.scss';
 
-const Results: React.FC<ResultsProps> = ({ query }) => {
+const Results: React.FC<{ query: string }> = ({ query }) => {
   const { page } = useParams();
   const navigate = useNavigate();
-
   const currentPage = useMemo(() => Number(page) || 1, [page]);
   const { data, loading, error } = useFetch(query, currentPage);
 
@@ -46,6 +45,7 @@ const Results: React.FC<ResultsProps> = ({ query }) => {
         </div>
         <Outlet />
       </div>
+      <Flyout />
     </main>
   );
 };

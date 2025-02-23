@@ -1,0 +1,13 @@
+.flyout {
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 900px;
+  background-color: orangered;
+  padding: 1rem 2rem;
+  border-top: 0.125rem solid orange;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
