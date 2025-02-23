@@ -9,7 +9,7 @@ import Search from './components/Search/Search';
 import Results from './components/Results/Results';
 import Page404 from './components/Page404/Page404';
 import CardDetails from './components/CardDetails/CardDetails';
-import { ThemeProvider } from './components/ThemeContext/ThemeContext';
+import { ThemeProvider } from './components/ThemeContext/ThemeProvider';
 import ThemeButton from './components/ThemeButton/ThemeButton';
 
 function App() {
