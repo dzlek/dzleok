@@ -1,4 +1,3 @@
-import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
 import { vi, expect, describe, it, beforeEach, afterEach } from 'vitest';
 
