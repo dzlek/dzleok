@@ -1,6 +1,6 @@
 import { ApiResponse } from '../../types/types';
 import Card from '../Card/Card';
-import s from './CardList.module.scss';
+import s from './Cardlist.module.scss';
 
 const CardList = ({ data }: { data: ApiResponse }) => {
   return (
