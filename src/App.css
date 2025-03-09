@@ -1,0 +1,39 @@
+:root[data-theme="light"] {
+    --bg-color: orangered;
+    --bg-color-dark: grey;
+    --bg-color-light: white;
+    
+    --text-color-light: white;
+    --text-color-dark: black;
+    
+    --border-color-dark: black;
+    --app-background: url('./assets/background.png') no-repeat;
+  }
+  
+  :root[data-theme="dark"] {
+    --bg-color: #2d2d2d;
+    --bg-color-dark: black;
+    --bg-color-light: grey;
+    
+    --text-color-light: black;
+    --text-color-dark: white;
+    
+    --border-color-dark: white;
+    --app-background: url('./assets/dark-background.png') no-repeat;
+  }
+
+
+
+
+.app {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--bg-color);
+    background-size: cover;
+    background: var(--app-background);
+}
+
